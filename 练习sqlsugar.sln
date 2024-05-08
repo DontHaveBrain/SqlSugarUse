@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "练习sugar", "练习sugar\练习sugar.csproj", "{0A3AB778-FCBE-44B8-86D9-A4B30F7AD9E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateMySqlClass", "CreateMySqlClass\CreateMySqlClass.csproj", "{CBCC2E8E-6BE9-4D6C-855B-3FE60420FED8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0A3AB778-FCBE-44B8-86D9-A4B30F7AD9E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A3AB778-FCBE-44B8-86D9-A4B30F7AD9E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A3AB778-FCBE-44B8-86D9-A4B30F7AD9E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBCC2E8E-6BE9-4D6C-855B-3FE60420FED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCC2E8E-6BE9-4D6C-855B-3FE60420FED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCC2E8E-6BE9-4D6C-855B-3FE60420FED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCC2E8E-6BE9-4D6C-855B-3FE60420FED8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

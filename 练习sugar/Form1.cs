@@ -36,7 +36,7 @@ namespace 练习sugar
                 _db = new SqlSugarClient(
                 new ConnectionConfig()
                 {
-                    ConnectionString = @"server=localhost;uid=admin;pwd=admin123;database=rare earth precipitation",
+                    ConnectionString = @"server=192.168.1.101;uid=admin;pwd=admin123;database=heat pump",
                     //@"Data source=LAPTOP-1AT3A4GN;uid=sa;pwd=~;database=mydb",
                     DbType = SqlSugar.DbType.MySql,
                     IsAutoCloseConnection = true,
@@ -75,7 +75,8 @@ namespace 练习sugar
             try
             {
                 _db.DbFirst.IsCreateAttribute(true);
-                _db.DbFirst.IsCreateDefaultValue(true).CreateClassFile(@"C:\Users\steve\Desktop\练习sqlsugar\练习sugar\MYDBTable", "练习sugar");
+                _db.DbFirst.SettingNamespaceTemplate((x) => { return "using SqlSugar;"; });
+                _db.DbFirst.IsCreateDefaultValue(true).CreateClassFile(@"C:\Users\steve\Desktop\sugarClass");
                 MsgShow("类生成成功");
             }
             catch (Exception ex)
