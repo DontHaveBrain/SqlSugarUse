@@ -1,12 +1,14 @@
 ﻿using SqlSugar;
- SqlSugarClient _db=null;
+using System.Configuration;
+using System.Net;
+SqlSugarClient _db=null;
 try
 {
 
     _db = new SqlSugarClient(
         new ConnectionConfig()
         {
-            ConnectionString = @"server=192.168.1.101;uid=admin;pwd=admin123;database=heat pump",
+            ConnectionString = $@"server={ConfigurationManager.AppSettings["IP_Address"]};uid={ConfigurationManager.AppSettings["user_name"]};pwd={ConfigurationManager.AppSettings["pass_word"]};database={ConfigurationManager.AppSettings["database_name"]}",
             //@"Data source=LAPTOP-1AT3A4GN;uid=sa;pwd=~;database=mydb",
             DbType = SqlSugar.DbType.MySql,
             IsAutoCloseConnection = true,
@@ -18,9 +20,12 @@ try
         Console.WriteLine(_db.Utilities.SerializeObject(pars.ToDictionary(it => it.ParameterName, it => it.Value)));
     };
 
-    Console.WriteLine ("连接成功"); 
+    Console.WriteLine ("连接成功");
+    string BaseDtnr= AppDomain.CurrentDomain.BaseDirectory;
+    string realPath = Path.Combine(BaseDtnr, "MySqlClassCollention");
+    Directory.CreateDirectory(realPath);
     _db.DbFirst.SettingNamespaceTemplate((x) => { return "using SqlSugar;"; });
-    _db.DbFirst.IsCreateAttribute(true).IsCreateDefaultValue(true).CreateClassFile(@"C:\Users\steve\Desktop\sugarClass"); 
+    _db.DbFirst.IsCreateAttribute(true).IsCreateDefaultValue(true).CreateClassFile(realPath); 
     Console.WriteLine("类生成成功");
     Console.ReadKey();
 }
