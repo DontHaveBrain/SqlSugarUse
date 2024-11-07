@@ -57,7 +57,7 @@ try
         string realPath = Path.Combine(BaseDtnr, "SqlServerClassCollention");
         Directory.CreateDirectory(realPath);
         _db.DbFirst 
-                   .SettingClassTemplate(( table) =>  { return $@"using SqlSugar;
+                   .SettingClassTemplate(( table) =>  { return $@"using ShuseiCommon.Common.Sqlsugar.DB.DBServer;
 using ShuseiCommon.Common.Sqlsugar.DB.DBFactory;
 using ShuseiCommon.Common.Sqlsugar.DB.DBEntity"  + @";
 
@@ -82,6 +82,18 @@ namespace " + "SqlSugar.Model" + @"
     public class {ClassName}Data : DBBase<{ClassName},int>,i{ClassName}Data
 	{ 
         public {ClassName}Data(IDbFactory dbFactory, string DBConnect = null):base(dbFactory,DBConnect)  {}
+    }
+    public interface i{ClassName}Server : IServerBase<{ClassName}, int>
+	{ 
+    }
+    [Injection(type = typeof(i{ClassName}Server), serviceLifetime = ServiceLifetime.Singleton)]
+    public class {ClassName}Server :ServerBase<{ClassName}, int> , i{ClassName}Server
+	{ 
+        private readonly i{ClassName}Data _i{ClassName}data;
+        public {ClassName}Server(i{ClassName}Data i{ClassName}data):base(i{ClassName}data)
+        {
+            _i{ClassName}data=i{ClassName}data;
+        }
     }
 }";  })
                    .IsCreateAttribute(true)
