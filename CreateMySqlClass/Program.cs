@@ -75,14 +75,7 @@ namespace " + "SqlSugar.Model" + @"
         }
        {PropertyName}
     }
-    public interface i{ClassName}Data : iDBBase<{ClassName},int>
-	{ 
-    }
-    [Injection(type = typeof(i{ClassName}Data), serviceLifetime = ServiceLifetime.Singleton)]
-    public class {ClassName}Data : DBBase<{ClassName},int>,i{ClassName}Data
-	{ 
-        public {ClassName}Data(IDbFactory dbFactory, string DBConnect = null):base(dbFactory,DBConnect)  {}
-    }
+    #region {ClassName}Server
     public interface i{ClassName}Server : IServerBase<{ClassName}, int>
 	{ 
     }
@@ -95,6 +88,17 @@ namespace " + "SqlSugar.Model" + @"
             _i{ClassName}data=i{ClassName}data;
         }
     }
+    #endregion
+    #region {ClassName}Data
+    public interface i{ClassName}Data : iDBBase<{ClassName},int>
+	{ 
+    }
+    [Injection(type = typeof(i{ClassName}Data), serviceLifetime = ServiceLifetime.Singleton)]
+    public class {ClassName}Data : DBBase<{ClassName},int>,i{ClassName}Data
+	{ 
+        public {ClassName}Data(IDbFactory dbFactory, string DBConnect = null):base(dbFactory,DBConnect)  {}
+    } 
+    #endregion
 }";  })
                    .IsCreateAttribute(true)
                    .IsCreateDefaultValue(true)
