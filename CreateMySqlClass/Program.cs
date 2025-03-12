@@ -59,7 +59,9 @@ try
         _db.DbFirst 
                    .SettingClassTemplate(( table) =>  { return $@"using ShuseiCommon.Common.Sqlsugar.DB.DBServer;
 using ShuseiCommon.Common.Sqlsugar.DB.DBFactory;
-using ShuseiCommon.Common.Sqlsugar.DB.DBEntity"  + @";
+using ShuseiCommon.Common.Sqlsugar.DB.DBEntity;
+using ShuseiCommon.Common.Sqlsugar.DB.DBIServerable;
+using ShuseiCommon.DependencyInjection;"  + @";
 
 namespace " + "SqlSugar.Model" + @"
 {	
